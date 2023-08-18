@@ -54,4 +54,18 @@ export class AppService {
 
     return reversedTweets.slice(min, max);
   }
+
+  getUserTweets(username: string): Tweet[] {
+    const currentTweetsQtt = this.tweets.length;
+    const reversedTweets: Tweet[] = [];
+
+    for (let i = currentTweetsQtt - 1; i >= 0; i--) {
+      const currentTweet = this.tweets[i];
+      if (currentTweet.username === username) {
+        reversedTweets.push(currentTweet);
+        continue;
+      }
+    }
+    return reversedTweets;
+  }
 }
